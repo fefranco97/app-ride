@@ -1,4 +1,10 @@
-# App-Ride 🚵‍♂️ -> Work in progress
+# App-Ride 🚵‍♂️ -> Work in progress 🚧
+
+HTML + CSS + JavaScript + Bootstrap app that will track all the route on a bike race
+
+- It can be used for another purposes, like tracking snowboarding, racing, mountain bike etc...
+
+---
 
 | Functionality                               | Is Done ? |
 | ------------------------------------------- | --------- |
