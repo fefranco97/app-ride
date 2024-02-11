@@ -7,23 +7,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const kilometersPerHour = 3.6
 
   let watchID = null
+  let currentRide = null
 
   const options = {
     enableHighAccuracy: true,
-  }
-
-  function handlerSuccess(position) {
-    speedElement.innerText = position.coords.speed
-      ? (position.coords.speed * kilometersPerHour).toFixed(1)
-      : 0
-  }
-  function handlerError(error) {
-    console.log(error.msg)
+    maximumAge: 0,
   }
 
   startButton.addEventListener('click', () => {
     if (watchID) return
 
+    currentRide = createNewRide()
     watchID = navigator.geolocation.watchPosition(handlerSuccess, handlerError, options)
 
     startButton.classList.add('d-none')
@@ -34,7 +28,19 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!watchID) return
     navigator.geolocation.clearWatch(watchID)
     watchID = null
+    updateStopTime(currentRide)
+    currentRide = null
     stopButton.classList.add('d-none')
     startButton.classList.remove('d-none')
   })
+
+  function handlerSuccess(position) {
+    addPosition(currentRide, position)
+    speedElement.innerText = position.coords.speed
+      ? (position.coords.speed * kilometersPerHour).toFixed(1)
+      : 0
+  }
+  function handlerError(error) {
+    console.log(error.msg)
+  }
 })
