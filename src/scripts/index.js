@@ -3,7 +3,7 @@ const kilometersPerHour = 3.6
 const earthRadiusInKilometers = 6371
 
 const rideListContainer = document.querySelector('#rideList')
-const rideRecords = getAllRidesRecords() // Assume you have this function elsewhere
+const rideRecords = getAllRidesRecords() 
 
 processRideRecords(rideRecords)
 
