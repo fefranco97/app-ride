@@ -17,12 +17,13 @@ HTML + CSS + JavaScript + Bootstrap app that will track all the route on a bike 
 | `Calculate the duration`             | Yes       |
 | `Show the complete path on the map ` | Yes       |
 
-| Screens                       | Is Done ? |
-| ----------------------------- | --------- |
-| `Home Screen`                 | Yes       |
-| `Speedometer Screen`          | Yes       |
-| `Details Screen`              | Yes       |
-| `Statistics Screen after run` | No        |
+| Screens                                       | Is Done ? |
+| --------------------------------------------- | --------- |
+| `Home Screen`                                 | Yes       |
+| `Speedometer Screen`                          | Yes       |
+| `Details Screen`                              | Yes       |
+| `Statistics Screen after run`                 | No        |
+| `Rework on CSS to a better UI on all screens` | No        |
 
 ---
 
@@ -42,7 +43,7 @@ Well, its a web application in fact, so to run at mobile device need to do somet
 
 1. Download [Vscode](https://code.visualstudio.com/)
 2. Install [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
-3. Install [NgRok](https://ngrok.com/), you need to creat an account and make the configurations, all documentation is available on the website.
+3. Install [NgRok](https://ngrok.com/), you need to create an account and make the configurations, all documentation is available on the website.
 
 > How to run
 

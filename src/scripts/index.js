@@ -19,7 +19,7 @@ async function createRideElement(ride) {
   const itemElement = document.createElement('li')
   itemElement.id = ride.id
   itemElement.className =
-    'd-flex p-2 align-items-center justify-content-between gap-3 m-2 border border-2 rounded shadow'
+    'd-flex p-2 align-items-center justify-content-between gap-3 m-2 border border-2 rounded shadow user-select-none'
 
   itemElement.addEventListener('click', () => {
     window.location.href = `src/pages/details.html?id=${ride.id}`
