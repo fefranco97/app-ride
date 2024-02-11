@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     currentRide = null
     stopButton.classList.add('d-none')
     startButton.classList.remove('d-none')
+    window.location.href = '../../index.html'
   })
 
   function handlerSuccess(position) {

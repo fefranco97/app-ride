@@ -38,6 +38,10 @@ function saveRideRecord(rideId, rideRecord) {
   localStorage.setItem(rideId, JSON.stringify(rideRecord))
 }
 
+function deleteRideRecord(rideId) {
+  localStorage.removeItem(rideId)
+}
+
 function updateStopTime(rideId) {
   const rideRecord = getRideRecord(rideId)
   rideRecord.stopTime = Date.now()

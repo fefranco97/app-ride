@@ -1,33 +1,23 @@
-const rideListContainer = document.querySelector('#rideList')
-const rideRecords = getAllRidesRecords()
+const rideId = new URLSearchParams(window.location.search).get('id')
+const ride = getRideRecord(rideId)
+const rideDetailsContainer = document.querySelector('#detailsContainer')
 
-processRideRecords(rideRecords)
+processRideRecord(ride)
 
-function processRideRecords(rideRecords) {
-  rideRecords.forEach(async ([id, value]) => {
-    const ride = JSON.parse(value)
-    ride.id = id
-    const rideElement = await createRideElement(ride)
+document.querySelector('#deleteButton').addEventListener('click', () => {
+  deleteRideRecord(rideId)
+  window.location.href = '../../index.html'
+})
 
-    rideListContainer.appendChild(rideElement)
-    const mapId = `map-${ride.id}`
-    createMapImage(ride, mapId, false, false, true)
-  })
+async function processRideRecord(ride) {
+  const rideDetailsElement = await createRideElement(ride)
+  rideDetailsContainer.appendChild(rideDetailsElement)
 }
 
 async function createRideElement(ride) {
-  const itemElement = document.createElement('li')
-  itemElement.id = ride.id
-  itemElement.className =
-    'd-flex p-2 align-items-center justify-content-between gap-3 m-2 border border-2 rounded shadow'
-
-  itemElement.addEventListener('click', () => {
-    window.location.href = `src/pages/details.html?id=${ride.id}`
-  })
-
-  const mapElement = document.createElement('div')
-  mapElement.classList.add('map')
-  mapElement.id = `map-${ride.id}`
+  const containerElement = document.createElement('div')
+  containerElement.id = rideId
+  containerElement.className = 'd-flex p-2 align-items-center justify-content-between gap-3'
 
   const dataElement = document.createElement('div')
   dataElement.className = 'd-flex flex-column flex-fill'
@@ -58,14 +48,15 @@ async function createRideElement(ride) {
   startDateDiv.innerText = getStartDate(ride.startTime)
   startDateDiv.className = 'text-secondary mt-2'
 
+  createMapImage(ride, 'mapDetailsContainer', true, true, false)
+
   dataElement.appendChild(cityDiv)
   dataElement.appendChild(maxSpeedDiv)
   dataElement.appendChild(distanceDiv)
   dataElement.appendChild(durationDiv)
   dataElement.appendChild(startDateDiv)
 
-  itemElement.appendChild(mapElement)
-  itemElement.appendChild(dataElement)
+  containerElement.appendChild(dataElement)
 
-  return itemElement
+  return containerElement
 }
